@@ -12,7 +12,8 @@
     "start:dev": "nodemon",
     "build": "rm -rf dist && rimraf ./build && tsc",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "test-single": "func() { env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register \"$1\"; }; func"
   },
   "repository": {
     "type": "git",
@@ -58,6 +59,7 @@
     ]
   },
   "dependencies": {
+    "buffer": "^6.0.3",
     "table": "^6.8.0"
   }
 }

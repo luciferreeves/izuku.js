@@ -1,17 +1,5 @@
 import Izuku from '../src/index';
-
-const header = ['Name', 'Age', 'Gender', 'Country'];
-const data = [
-  ['Arthur', 21, 'Male', 'USA'],
-  ['Betty', 20, 'Female', 'Canada'],
-  ['Victor', 25, 'Male'],
-  ['Dodger', 30, 'Male', 'Canada'],
-  ['Rayan', 21, 'Male', 'Russia'],
-  ['Skitley', 29, 'Female', 'Germany'],
-  ['Victoria', 89, 'Female', 'UK'],
-  ['Tiger', 23, 'Male', 'India'],
-  ['Killjoy', null, 'Female', 'Riot']
-];
+import { data, header } from './support/people';
 
 const frame = new Izuku(data, header);
 

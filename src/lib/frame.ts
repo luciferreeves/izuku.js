@@ -1,4 +1,5 @@
 import Izuku from '../index';
+import { getSize } from './info';
 /**
  * data prints the data of the frame in console.table format. It also sets the new data to the frame if data is passed as a parameter
  * @param rowdata: the rowdata to be sent to the frame
@@ -10,6 +11,7 @@ export function data(
 ): unknown[][] | any {
   if (rowdata) {
     this.rowdata = rowdata;
+    this.size = getSize(this.rowdata);
   }
 
   return this;
@@ -24,19 +26,51 @@ export function header(
   this: Izuku,
   header: Array<string>
 ): Array<string> | any {
-  if (!this.rowdata.length) {
-    throw new Error('Set data before setting header');
+  console.log(header);
+  if (!header.length) {
+    this.columns = generateHeader(this.rowdata);
   } else {
-    const passedHeaderLength = header.length;
-    const maxSizedArrayLength = this.rowdata.reduce((acc, curr) => {
-      return acc.length > curr.length ? acc : curr;
-    }).length;
-    if (passedHeaderLength !== maxSizedArrayLength) {
-      throw new Error('Header length does not match data length');
-    } else {
-      this.columns = header;
-    }
+    this.columns = setHeader(this.rowdata, header);
   }
 
   return this;
+}
+
+/**
+ * setHeader sets the names of the columns of the frame
+ * @param rowdata: the rowdata to be sent to the frame
+ * @param header: the header to be attached to the frame
+ * @returns a new header
+ */
+
+export function setHeader(rowdata: any[][], header: any[]): Array<string> {
+  const maxSizedArrayLength = rowdata.reduce((acc, curr) => {
+    return acc.length > curr.length ? acc : curr;
+  }).length;
+  const newHeaderArray = Array(maxSizedArrayLength).fill('');
+  for (let i = 0; i < maxSizedArrayLength; i++) {
+    if (header[i]) {
+      newHeaderArray[i] = header[i];
+    } else {
+      newHeaderArray[i] = `Column ${i + 1}`;
+    }
+  }
+  return newHeaderArray;
+}
+
+/**
+ * generateHeader generates the names of the columns of the frame
+ * @param rowdata: the rowdata to be sent to the frame
+ * @returns a new header
+ */
+
+export function generateHeader(rd: Array<any[]>): Array<string> {
+  const maxSizedArrayLength = rd.reduce((acc, curr) => {
+    return acc.length > curr.length ? acc : curr;
+  }).length;
+  const header: Array<string> = [];
+  for (let i = 0; i < maxSizedArrayLength; i++) {
+    header.push(`Column ${i + 1}`);
+  }
+  return header;
 }

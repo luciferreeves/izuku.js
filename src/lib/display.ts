@@ -1,6 +1,13 @@
 import Izuku from '../index';
 import { table } from 'table';
 
+/**
+ * getTable returns the data compatible with table.table
+ * @param rowdata the rowdata to be sent to the frame
+ * @param columns the header columns to be sent to the frame
+ * @param indexRow index of the row to be printed
+ * @returns Array of arrays
+ */
 function getTable(
   rowdata: unknown[][],
   columns: string[],
