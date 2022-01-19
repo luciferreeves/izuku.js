@@ -44,5 +44,10 @@
     "hooks": {
       "pre-commit": "npm run prettier-format && npm run lint"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
