@@ -2,14 +2,16 @@
   "name": "izuku",
   "version": "0.1.0",
   "description": "In-Console Tabular Data Representation and Manipulation",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node build/index.js",
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
