@@ -1,36 +1,36 @@
 export default class Izuku {
-  constructor(data?: Array<unknown[]>, header?: Array<string>) {
-    this.data = data || [];
+  constructor(rowdata?: Array<unknown[]>, header?: Array<string>) {
+    this.rowdata = rowdata || [];
     this.header = header || [];
   }
 
-  protected data: Array<unknown[]> = [];
+  protected rowdata: Array<unknown[]> = [];
   protected header: Array<string> = [];
   /**
-   * frame creates a new frame
-   * @param data: the data to be sent to the frame
-   * @returns a new frame with the data or updates the current frame with new data or returns the current data if data is present
+   * data sets the rowdata of the frame, it creates a new frame if the frame is undefined
+   * @param rowdata: the rowdata to be sent to the frame
+   * @returns a new frame with the rowdata or updates the current frame with new rowdata or returns the current rowdata if rowdata is present
    */
-  frame(data?: Array<unknown[]>): Izuku | unknown[][] {
-    if (data) {
-      this.data = data;
-      return new Izuku(data, this.header);
-    } else if (this.data) {
-      return this.data;
+  data(rowdata?: Array<unknown[]>): Izuku | unknown[][] {
+    if (rowdata) {
+      this.rowdata = rowdata;
+      return new Izuku(rowdata, this.header);
+    } else if (this.rowdata) {
+      return this.rowdata;
     } else {
-      throw new Error('Frame has no data.');
+      throw new Error('Frame has no rowdata.');
     }
   }
 
   /**
-   * columns creates a new header for the current data
+   * columns sets the header of the frame, it creates a new frame if the frame is undefined
    * @param header: the header to be sent to the frame
    * @returns a new frame with the header or updates the current frame with new header or returns the current header if header is present
    */
   columns(header?: Array<string>): Izuku | Array<string> {
     if (header) {
       this.header = header;
-      return new Izuku(this.data, header);
+      return new Izuku(this.rowdata, header);
     } else if (this.header) {
       return this.header;
     } else {

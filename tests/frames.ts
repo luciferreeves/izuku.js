@@ -9,7 +9,7 @@ describe('frames.ts', () => {
         ['d', 'e', 'f'],
         ['g', 'h', 'i']
       ]);
-      expect(newframe.frame()).to.deep.equal([
+      expect(newframe.data()).to.deep.equal([
         ['a', 'b', 'c'],
         ['d', 'e', 'f'],
         ['g', 'h', 'i']
@@ -26,19 +26,19 @@ describe('frames.ts', () => {
         ['g', 'h', 'i']
       ]);
       newframe.columns(['a', 'b', 'c']);
-      expect(newframe.frame()).to.deep.equal([
+      expect(newframe.data()).to.deep.equal([
         ['a', 'b', 'c'],
         ['d', 'e', 'f'],
         ['g', 'h', 'i']
       ]);
       expect(newframe.columns()).to.deep.equal(['a', 'b', 'c']);
-      newframe.frame([
+      newframe.data([
         ['j', 'k', 'l'],
         ['m', 'n', 'o'],
         ['p', 'q', 'r']
       ]);
       newframe.columns(['j', 'k', 'l']);
-      expect(newframe.frame()).to.deep.equal([
+      expect(newframe.data()).to.deep.equal([
         ['j', 'k', 'l'],
         ['m', 'n', 'o'],
         ['p', 'q', 'r']
