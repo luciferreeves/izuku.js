@@ -1,3 +1,6 @@
+import Izuku from '../index';
+import { table } from 'table';
+
 function getTable(
   rowdata: unknown[][],
   columns: string[],
@@ -24,4 +27,79 @@ function getTable(
   return [['Index', ...columns], ...frameRows];
 }
 
-export { getTable };
+/**
+ * show prints the frame in console.table format
+ * @returns the current frame
+ * @throws Error if the frame is empty
+ */
+export function show(this: Izuku): void {
+  if (!this.rowdata.length) {
+    throw new Error('Set data before printing');
+  }
+  const numberOfRows = this.rowdata.length;
+  if (numberOfRows < 7) {
+    console.log(table(getTable(this.rowdata, this.columns)));
+  } else {
+    const firstThreeRows = this.rowdata.slice(0, 3);
+    const lastThreeRows = this.rowdata.slice(numberOfRows - 3);
+    const middleRow = [];
+    for (let i = 0; i < this.columns.length; i++) {
+      middleRow.push('...');
+    }
+    const indexRow = [
+      0,
+      1,
+      2,
+      '...',
+      numberOfRows - 3,
+      numberOfRows - 2,
+      numberOfRows - 1
+    ];
+    const combinedRow = [...firstThreeRows, [...middleRow], ...lastThreeRows];
+    console.log(table(getTable(combinedRow, this.columns, indexRow)));
+  }
+}
+
+/**
+ * head prints maximum first n rows of the frame
+ * @param n: the number of rows to be returned
+ * @returns the first n rows of the frame as array of arrays
+ * @throws Error if the frame is empty
+ */
+export function head(this: Izuku, n = 5): void {
+  if (!this.rowdata.length) {
+    throw new Error('Set data before printing');
+  }
+  // Check if n is greater than the number of rows
+  if (n > this.rowdata.length) {
+    n = this.rowdata.length;
+  }
+
+  // Generate the index row
+  const indexRow = this.rowdata.map((row, index) => index);
+  const data = this.rowdata.slice(0, n);
+  console.log(table(getTable(data, this.columns, indexRow)));
+}
+
+/**
+ * tail prints maximum last n rows of the frame
+ * @param n: the number of rows to be returned
+ * @returns the last n rows of the frame as array of arrays
+ * @throws Error if the frame is empty
+ */
+export function tail(this: Izuku, n = 5): void {
+  if (!this.rowdata.length) {
+    throw new Error('Set data before printing');
+  }
+  // Check if n is greater than the number of rows
+  if (n > this.rowdata.length) {
+    n = this.rowdata.length;
+  }
+
+  // Generate the index row
+  const indexRow = this.rowdata.map((row, index) => index);
+  const data = this.rowdata.slice(this.rowdata.length - n);
+  // Slice the index row to match the data
+  const slicedIndexRow = indexRow.slice(indexRow.length - n);
+  console.log(table(getTable(data, this.columns, slicedIndexRow)));
+}
