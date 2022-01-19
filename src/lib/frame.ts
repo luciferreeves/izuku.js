@@ -26,7 +26,6 @@ export function header(
   this: Izuku,
   header: Array<string>
 ): Array<string> | any {
-  console.log(header);
   if (!header.length) {
     this.columns = generateHeader(this.rowdata);
   } else {
