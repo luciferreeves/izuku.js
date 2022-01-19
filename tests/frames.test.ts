@@ -1,10 +1,11 @@
 import { expect } from 'chai';
-import { Frame } from '../src/index';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Izuku = require('../src/index');
 
 describe('frames.ts', () => {
   describe('Create a new frame with column names', () => {
     it('should create a new frame', () => {
-      const newframe = new Frame([
+      const newframe = new Izuku([
         ['a', 'b', 'c'],
         ['d', 'e', 'f'],
         ['g', 'h', 'i']
@@ -20,7 +21,7 @@ describe('frames.ts', () => {
   });
   describe('Update a frame and column names', () => {
     it('should update a frame', () => {
-      const newframe = new Frame([
+      const newframe = new Izuku([
         ['a', 'b', 'c'],
         ['d', 'e', 'f'],
         ['g', 'h', 'i']
@@ -54,7 +55,7 @@ describe('frames.ts', () => {
         ['Betty', 20, 'Female', 'Canada'],
         ['Victor', 25, 'Male']
       ];
-      const newframe = new Frame(data, header);
+      const newframe = new Izuku(data, header);
       newframe.data();
     });
   });
