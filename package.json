@@ -1,7 +1,7 @@
 {
   "name": "izuku",
   "version": "0.1.0",
-  "description": "",
+  "description": "In-Console Tabular Data Representation and Manipulation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -31,10 +31,19 @@
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "esno": "^0.14.0",
+    "husky": "^7.0.4",
     "nodemon": "^2.0.15",
+    "picocolors": "^1.0.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run prettier-format && npm run lint",
+      "commit-msg": "npx esno scripts/verifyCommit.ts $1"
+    }
   }
 }
