@@ -43,7 +43,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run prettier-format && npm run lint",
-      "commit-msg": "npx esno .husky/semantic.ts $1"
+      "commit-msg": "npx esno husky/semantic.ts $1"
     }
   }
 }
