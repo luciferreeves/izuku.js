@@ -1,7 +1,7 @@
-import Izuku from '../src/index';
+import { Frame } from '../src/index';
 import { data, header } from './support/people';
 
-const frame = new Izuku(data, header);
+const frame = new Frame(data, header);
 
 describe('printing.test.ts', () => {
   describe('Print a frame', () => {

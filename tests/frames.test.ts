@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Izuku from '../src/index';
+import { Frame } from '../src/index';
 
 const data = [
   ['a', 'b', 'c'],
@@ -20,7 +20,7 @@ const changedHeader = ['j', 'k', 'l'];
 describe('frames.test.ts', () => {
   describe('Create a new frame with column names', () => {
     it('should create a new frame', () => {
-      const frame = new Izuku(data);
+      const frame = new Frame(data);
       expect(frame.rowdata).to.deep.equal(data);
       frame.header(header);
       expect(frame.columns).to.deep.equal(header);
@@ -28,7 +28,7 @@ describe('frames.test.ts', () => {
   });
   describe('Update a frame and column names', () => {
     it('should update a frame', () => {
-      const frame = new Izuku(data);
+      const frame = new Frame(data);
       frame.header(header);
       expect(frame.rowdata).to.deep.equal(data);
       expect(frame.columns).to.deep.equal(header);

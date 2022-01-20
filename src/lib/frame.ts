@@ -1,4 +1,4 @@
-import Izuku from '../index';
+import { Frame } from '../index';
 import { getSize } from './info';
 /**
  * data prints the data of the frame in console.table format. It also sets the new data to the frame if data is passed as a parameter
@@ -6,7 +6,7 @@ import { getSize } from './info';
  * @returns the current frame
  */
 export function data(
-  this: Izuku,
+  this: Frame,
   rowdata?: Array<unknown[]>
 ): unknown[][] | any {
   if (rowdata) {
@@ -23,7 +23,7 @@ export function data(
  * @returns the current frame
  */
 export function header(
-  this: Izuku,
+  this: Frame,
   header: Array<string>
 ): Array<string> | any {
   if (!header.length) {

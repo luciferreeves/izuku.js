@@ -1,4 +1,4 @@
-import Izuku from '../index';
+import { Frame } from '../index';
 import { table } from 'table';
 
 /**
@@ -39,7 +39,7 @@ function getTable(
  * @returns the current frame
  * @throws Error if the frame is empty
  */
-export function show(this: Izuku): void {
+export function show(this: Frame): void {
   if (!this.rowdata.length) {
     throw new Error('Set data before printing');
   }
@@ -73,7 +73,7 @@ export function show(this: Izuku): void {
  * @returns the first n rows of the frame as array of arrays
  * @throws Error if the frame is empty
  */
-export function head(this: Izuku, n = 5): void {
+export function head(this: Frame, n = 5): void {
   if (!this.rowdata.length) {
     throw new Error('Set data before printing');
   }
@@ -94,7 +94,7 @@ export function head(this: Izuku, n = 5): void {
  * @returns the last n rows of the frame as array of arrays
  * @throws Error if the frame is empty
  */
-export function tail(this: Izuku, n = 5): void {
+export function tail(this: Frame, n = 5): void {
   if (!this.rowdata.length) {
     throw new Error('Set data before printing');
   }

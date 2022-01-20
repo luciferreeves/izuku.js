@@ -1,8 +1,8 @@
-import Izuku from '../src/index';
+import { Frame } from '../src/index';
 import { expect } from 'chai';
 import { data, header } from './support/people';
 
-const frame = new Izuku(data, header);
+const frame = new Frame(data, header);
 
 describe('info.ts', () => {
   describe('Print size of frame', () => {

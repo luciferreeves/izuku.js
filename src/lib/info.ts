@@ -1,6 +1,7 @@
-import Izuku from '../index';
+import { Frame } from '../index';
 import { table } from 'table';
 import { sizeof } from '../helpers/memorySize';
+import { flatten } from './data';
 /**
  * size returns the total number of elements in the frame
  * @returns the total number of elements in the frame
@@ -8,29 +9,14 @@ import { sizeof } from '../helpers/memorySize';
  */
 export function getSize(rowdata: any[]): number {
   // Get the number of elements in 2D array, do not count nulls
-  const numberOfElements = rowdata.reduce(
-    (
-      acc: any,
-      row: {
-        filter: (arg0: (item: any) => boolean) => {
-          (): any;
-          new (): any;
-          length: any;
-        };
-      }
-    ) => {
-      return acc + row.filter((item: null) => item !== null).length;
-    },
-    0
-  );
-  return numberOfElements;
+  return flatten(rowdata).length;
 }
 
 /**
  * info returns the type of data present in each column of the frame
  * @returns the type of data present in each column of the frame
  */
-export function info(this: Izuku): void {
+export function info(this: Frame): void {
   const info: Array<any[]> = [];
   info.push(['#', 'Column Name', 'Types', 'Empty Values']);
   let counter = 0;
