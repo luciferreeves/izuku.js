@@ -248,7 +248,7 @@ The `info()` method is used to print the frame information. It takes no argument
 frame.info();
 ```
 
-If you run the `info()` method on the frame with data defined at the start of this readme, it will print the following information:
+If you run the `info()` method on the frame with [data defined](https://github.com/luciferreeves/izuku.js#using-izuku) at the start of this readme, it will print the following information:
 
 ```
 RangeIndex: 35 elements, 0 to 34
