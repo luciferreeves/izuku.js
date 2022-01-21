@@ -302,6 +302,12 @@ range(0, 10, 2, [1, 3, 5, 7, 9]);
 #### Example with frame
 
 ```js
+// Import Frame and range
+import { Frame, range } from 'izuku';
+
+// create a frame
+const frame = new Frame([[...], [...], ...]);
+
 // Get all columns from 2 to 6
 const columns = frame.column(range(2, 6));
 ```
