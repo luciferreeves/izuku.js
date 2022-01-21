@@ -1,5 +1,10 @@
 import { data, generateHeader, setHeader, header } from './lib/frame';
-import { getMultipleColumnDetails, getSingleColumnDetails } from './lib/locate';
+import {
+  getMultipleColumnDetails,
+  getSingleColumnDetails,
+  getSingleRowDetails,
+  getMultipleRowDetails
+} from './lib/locate';
 import { show, head, tail } from './lib/display';
 import { getSize, info } from './lib/info';
 import { flatten } from './lib/data';
@@ -40,6 +45,17 @@ class Izuku {
       }
     } else {
       throw new Error('Unexpected type of column');
+    }
+  };
+  public row = (row: number | Array<number>) => {
+    if (typeof row === 'number') {
+      const izSampler = getSingleRowDetails(this, row);
+      return new Izuku(izSampler.rowd, izSampler.rowh);
+    } else if (Array.isArray(row)) {
+      const izSampler = getMultipleRowDetails(this, row);
+      return new Izuku(izSampler.rowd, this.columns);
+    } else {
+      throw new Error('Row must be an integer or an array of integers');
     }
   };
   public flatten = () => {

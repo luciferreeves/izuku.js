@@ -9,10 +9,7 @@ interface Izuku {
  * @param column: the column index or name to be checked
  * @returns true if the column exists
  */
-export function checkIfColumnExists(
-  frame: Izuku,
-  column: number | string
-): boolean {
+function checkIfColumnExists(frame: Izuku, column: number | string): boolean {
   if (typeof column === 'number') {
     return column < frame.columns.length;
   } else if (typeof column === 'string') {
@@ -20,6 +17,16 @@ export function checkIfColumnExists(
   } else {
     throw new Error('column must be a number or a string');
   }
+}
+
+/**
+ * checkIfRowExists - check if a row exists in the frame
+ * @param frame: the frame to be checked
+ * @param row: the row index to be checked
+ * @returns true if the row exists
+ */
+function checkIfRowExists(frame: Izuku, row: number): boolean {
+  return row < frame.rowdata.length;
 }
 
 /**
@@ -73,4 +80,33 @@ export function getMultipleColumnDetails(
     return extractedColumns.map((row) => row[i]);
   });
   return { rowd: transposedColumns, rowh: columnNames };
+}
+
+/**
+ * getSingleRowDetails - returns a single row of the frame
+ * @param row: the row to be returned
+ * @returns a single row of the frame as array of arrays
+ * @throws Error if the row does not exist
+ * @throws Error if the row is not a number
+ */
+export function getSingleRowDetails(iz: Izuku, row: number) {
+  if (checkIfRowExists(iz, row)) {
+    return { rowd: [iz.rowdata[row]], rowh: iz.columns };
+  } else {
+    throw new Error(`Row ${row} does not exist`);
+  }
+}
+
+/**
+ * getMultipleRowDetails - returns multiple rows of the frame
+ * @param rows: an array of row indexes
+ * @returns an array of arrays containing the rows
+ */
+export function getMultipleRowDetails(iz: Izuku, rows: Array<number>) {
+  const extractedRows: any[][] = [];
+  rows.forEach((row) => {
+    const rowDetails = getSingleRowDetails(iz, row);
+    extractedRows.push(rowDetails.rowd[0]);
+  });
+  return { rowd: extractedRows, rowh: iz.columns };
 }
