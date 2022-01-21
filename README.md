@@ -1,7 +1,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/luciferreeves/izuku.js/Node.js%20CI) ![Lines of code](https://img.shields.io/tokei/lines/github/luciferreeves/izuku.js?label=lines%20of%20code) ![GitHub](https://img.shields.io/github/license/luciferreeves/izuku.js) ![GitHub issues](https://img.shields.io/github/issues-raw/luciferreeves/izuku.js)
 
 <p align="center">
-  <img width="100%" src="./render/izuku.png">
+  <img width="100%" src="./render/Izuku.png">
 </p>
 
 # Izuku
