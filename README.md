@@ -1,7 +1,9 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/luciferreeves/izuku.js/Node.js%20CI) ![Lines of code](https://img.shields.io/tokei/lines/github/luciferreeves/izuku.js?label=lines%20of%20code) ![GitHub](https://img.shields.io/github/license/luciferreeves/izuku.js) ![GitHub issues](https://img.shields.io/github/issues-raw/luciferreeves/izuku.js)
-
 <p align="center">
   <img width="100%" src="./render/Izuku.png">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/workflow/status/luciferreeves/izuku.js/Node.js%20CI"> <img src="https://img.shields.io/tokei/lines/github/luciferreeves/izuku.js?label=lines%20of%20code"> <img src="https://img.shields.io/github/license/luciferreeves/izuku.js"> <img src="https://img.shields.io/github/issues-raw/luciferreeves/izuku.js">
 </p>
 
 # Izuku
@@ -64,11 +66,13 @@ The above code creates a frame and prints it to the console. It looks like this:
 ```
 
 ## Frame Properties
+
 There are some properties attached to the frame class. You can tap into those properties by using the dot (.) notation.
 
 > **Note:** Frame methods are not available on the properties. You need to `console.log(propername)` to see the property values.
 
 ### `rowdata`
+
 The `rowdata` property is an array of arrays that represents the data in the frame.
 
 > **Note:** The `rowdata` property is read-only. If you want to modify the data in the frame, you can use the `data()` method.
@@ -79,6 +83,7 @@ console.log(rowdata); // prints "data" array
 ```
 
 ### `columns`
+
 The `columns` property is an array of strings that represents the column names in the frame.
 
 > **Note:** The `columns` property is read-only. If you want to modify the column names in the frame, you can use the `header()` method.
@@ -89,6 +94,7 @@ console.log(columns); // prints "header" array
 ```
 
 ### `size`
+
 The `size` property gives the number of elements present in the frame.
 
 > **Note:** The `size` property is read-only and is automatically generated when the frame is created. Size can change if data is modified.
@@ -99,6 +105,7 @@ console.log(size); // prints size. ex: 9
 ```
 
 ### `shape`
+
 The `shape` property gives the number of rows and columns present in the frame.
 
 > **Note:** The `shape` property is read-only and is automatically generated when the frame is created. Shape can change if data is modified.
@@ -109,9 +116,11 @@ console.log(shape); // prints shape. ex: 9 x 4
 ```
 
 ## Frame Methods
+
 There are some methods attached to the frame class. You can tap into those methods by using the dot (.) notation. Most of the methods are chainable.
 
 ### `data()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
+
 The `data()` method is used to modify the data in the frame. It takes the same data argument as the constructor – which is an array of arrays.
 
 > **Note:** If you use data method without passing any argument, it will simply return the frame.
@@ -186,6 +195,7 @@ The `row()` method is used to get the row data of a particular row. It takes the
 The `row()` method returns a new frame with extracted row data as the data of the frame. You can chain other frame methods on the returned frame.
 
 #### Get a single row
+
 ```js
 // get a single row on Index 2 (Index starts from 0)
 const row = frame.row(2);
@@ -195,6 +205,7 @@ row.show();
 ```
 
 #### Get multiple rows
+
 ```js
 // get multiple rows on Index 2 and 3 (Index starts from 0)
 const rows = frame.row([2, 3]);
@@ -281,13 +292,12 @@ Helper methods are methods that are used to help you with some common tasks. The
 
 `range()` is a helper method that is used to create a an array of numbers. Here are the arguments and their default values:
 
-
-| Argument | Description | Default Value |
-|----------|-------------|-------------- |
-| `start`  | The start of the range | Required |
-| `end`    | The end of the range | Required |
-| `step`   | The step size of the range | 1 |
-| `remove` | An array of numbers which should not be included in the range | `undefined` |
+| Argument | Description                                                   | Default Value |
+| -------- | ------------------------------------------------------------- | ------------- |
+| `start`  | The start of the range                                        | Required      |
+| `end`    | The end of the range                                          | Required      |
+| `step`   | The step size of the range                                    | 1             |
+| `remove` | An array of numbers which should not be included in the range | `undefined`   |
 
 > Note: The `step` and `remove` arguments are optional. If you do not provide it, `step` will be set to 1 and `remove` will be set to `undefined`.
 
@@ -343,11 +353,13 @@ git clone https://github.com/luciferreeves/izuku.js.git
 ```
 
 Run the build script:
+
 ```bash
 cd izuku.js && npm install && npm run build
 ```
 
 Run tests:
+
 ```bash
 cd izuku.js && npm test
 ```
