@@ -1,4 +1,9 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/luciferreeves/izuku.js/Node.js%20CI) ![Lines of code](https://img.shields.io/tokei/lines/github/luciferreeves/izuku.js?label=lines%20of%20code) ![GitHub](https://img.shields.io/github/license/luciferreeves/izuku.js) ![GitHub issues](https://img.shields.io/github/issues-raw/luciferreeves/izuku.js)
+
+<p align="center">
+  <img height="150" src="./render/izuku_readme.png">
+</p>
+
 # Izuku
 
 Izuku is a simple, fast, and powerful tabular data representation and manipulation library written in [TypeScript](https://www.typescriptlang.org/). It is designed to be used to view, manipulate and debug 2D data in NodeJS applications.
