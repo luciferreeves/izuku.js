@@ -8,7 +8,7 @@ describe('info.ts', () => {
   describe('Print size of frame', () => {
     it('should print the size of the frame', () => {
       const size = frame.size;
-      expect(size).to.equal(34);
+      expect(size).to.equal(35);
     });
   });
   describe('Print shape of frame', () => {
