@@ -10,7 +10,7 @@ The core of Izuku is the `Frame` class that represents a 2D array of data. It is
 ## Table of Contents
 - [Izuku](#izuku)
   * [Table of Contents](#table-of-contents)
-  * [Using Izuku](#using-izuku)
+  * [Frames](#frames)
   * [Frame Properties](#frame-properties)
     + [`rowdata`](#-rowdata-)
     + [`columns`](#-columns-)
@@ -33,7 +33,7 @@ The core of Izuku is the `Frame` class that represents a 2D array of data. It is
   * [Cloning and Building this Repository](#cloning-and-building-this-repository)
 
 
-## Using Izuku
+## Frames
 
 ```js
 import { Frame } from 'izuku';
