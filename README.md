@@ -5,7 +5,7 @@ Izuku is a simple, fast, and powerful tabular data representation and manipulati
 
 The core of Izuku is the `Frame` class that represents a 2D array of data. It is designed to be used as a data structure for tabular data. Izuku is heavily inspired by [Pandas](https://pandas.pydata.org/).
 
-> **Note**: Izuku is not a replacement for Pandas and should not be used for data analysis. It is designed to be used for data visualization and debugging. It can, however, hnadle large datasets and help you understand your data better but comes at some cost in performance. Since, Pandas is based on NumPy, and NumPy is written in C, Pandas would be much faster than Izuku.
+> **Note**: Izuku is not a replacement for Pandas and should not be used for data analysis. It is designed to be used for data visualization and debugging. It can, however, handle large datasets and help you understand your data better but comes at some cost in performance. Since, Pandas is based on NumPy, and NumPy is written in C, Pandas would be much faster than Izuku.
 
 ## Using Izuku
 
@@ -61,15 +61,14 @@ The above code creates a frame and prints it to the console. It looks like this:
 ## Frame Properties
 There are some properties attached to the frame class. You can tap into those properties by using the dot (.) notation.
 
+> **Note:** Frame methods are not available on the properties. You need to `console.log(propername)` to see the property values.
+
 ### `rowdata`
 The `rowdata` property is an array of arrays that represents the data in the frame.
 
 > **Note:** The `rowdata` property is read-only. If you want to modify the data in the frame, you can use the `data()` method.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
 const rowdata = frame.rowdata;
 console.log(rowdata); // prints "data" array
 ```
@@ -80,9 +79,6 @@ The `columns` property is an array of strings that represents the column names i
 > **Note:** The `columns` property is read-only. If you want to modify the column names in the frame, you can use the `header()` method.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
 const columns = frame.columns;
 console.log(columns); // prints "header" array
 ```
@@ -93,9 +89,6 @@ The `size` property gives the number of elements present in the frame.
 > **Note:** The `size` property is read-only and is automatically generated when the frame is created. Size can change if data is modified.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
 const size = frame.size;
 console.log(size); // prints size. ex: 9
 ```
@@ -106,9 +99,6 @@ The `shape` property gives the number of rows and columns present in the frame.
 > **Note:** The `shape` property is read-only and is automatically generated when the frame is created. Shape can change if data is modified.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
 const shape = frame.shape;
 console.log(shape); // prints shape. ex: 9 x 4
 ```
@@ -138,10 +128,6 @@ The `header()` method is used to modify the column names in the frame. It takes 
 > **Note:** If you use header method without passing any argument, it will reset the column names to default header (Remember: header is optional).
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // modify the header
 const newHeader = [...];
 frame.header(newHeader);
@@ -165,10 +151,6 @@ The `column()` method returns a new frame with extracted column data as the data
 #### Get a single column
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // get a single column on Index 2 (Index starts from 0)
 const column = frame.column(2);
 
@@ -182,10 +164,6 @@ column.show();
 #### Get multiple columns
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // get multiple columns on Index 2 and 3 (Index starts from 0)
 const columns = frame.column([2, 3]);
 
@@ -204,10 +182,6 @@ The `row()` method returns a new frame with extracted row data as the data of th
 
 #### Get a single row
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // get a single row on Index 2 (Index starts from 0)
 const row = frame.row(2);
 
@@ -217,10 +191,6 @@ row.show();
 
 #### Get multiple rows
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // get multiple rows on Index 2 and 3 (Index starts from 0)
 const rows = frame.row([2, 3]);
 
@@ -235,10 +205,6 @@ The `head()` method is used to get the first `n` rows of the frame. It takes the
 `head()` is a print method and it does not return a new frame and therefore it is not chainable.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // get the first 5 rows
 frame.head();
 
@@ -253,10 +219,6 @@ The `tail()` method is used to get the last `n` rows of the frame. It takes the 
 `tail()` is a print method and it does not return a new frame and therefore it is not chainable.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // get the last 5 rows
 frame.tail();
 
@@ -271,10 +233,6 @@ The `show()` method is used to print the frame. It takes no argument.
 `show()` is a print method and it does not return a new frame and therefore it is not chainable.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // print the frame
 frame.show();
 ```
@@ -286,10 +244,6 @@ The `info()` method is used to print the frame information. It takes no argument
 `info()` is a print method and it does not return a new frame and therefore it is not chainable.
 
 ```js
-const data = [[...], [...], ...];
-const header = [...];
-const frame = new Frame(data, header);
-
 // print the frame information
 frame.info();
 ```
@@ -325,7 +279,9 @@ const data = [[...], [...], ...];
 const header = [...];
 const frame = new Frame(data, header);
 
-// get multiple rows on Index 2 and 3 and get the 'Name' and 'Age' columns of those rows and print the data
+// 1. get multiple rows on Index 2 and 3
+// 2. then get the 'Name' and 'Age' columns of those rows
+// 3. finally print the data
 frame.row([2, 3]).column(['Name', 'Age']).show();
 ```
 
