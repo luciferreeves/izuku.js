@@ -131,3 +131,4 @@ dist
 
 # dist directory
 dist
+.DS_Store
