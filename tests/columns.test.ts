@@ -1,4 +1,4 @@
-import { Frame } from '../src/index';
+import { Frame, range } from '../src/index';
 import { data, header } from './support/people';
 import { expect } from 'chai';
 
@@ -38,6 +38,25 @@ describe('columns.ts', () => {
       ];
       const headersToExpect = ['Name', 'Gender'];
       const namesAndGenders = frame.column([0, 2]);
+      expect(namesAndGenders.rowdata).to.deep.equal(dataToExpect);
+      expect(namesAndGenders.columns).to.deep.equal(headersToExpect);
+    });
+  });
+  describe('Get multiple columns over a range', () => {
+    it('should return multiple columns over a range', () => {
+      const dataToExpect = [
+        [['Arthur'], ['Male']],
+        [['Betty'], ['Female']],
+        [['Victor'], ['Male']],
+        [['Dodger'], ['Male']],
+        [['Rayan'], ['Male']],
+        [['Skitley'], ['Female']],
+        [['Victoria'], ['Female']],
+        [['Tiger'], ['Male']],
+        [['Killjoy'], ['Female']]
+      ];
+      const headersToExpect = ['Name', 'Gender'];
+      const namesAndGenders = frame.column(range(0, 2, 2));
       expect(namesAndGenders.rowdata).to.deep.equal(dataToExpect);
       expect(namesAndGenders.columns).to.deep.equal(headersToExpect);
     });
