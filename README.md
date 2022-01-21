@@ -7,6 +7,32 @@ The core of Izuku is the `Frame` class that represents a 2D array of data. It is
 
 > **Note**: Izuku is not a replacement for Pandas and should not be used for data analysis. It is designed to be used for data visualization and debugging. It can, however, handle large datasets and help you understand your data better but comes at some cost in performance. Since, Pandas is based on NumPy, and NumPy is written in C, Pandas would be much faster than Izuku.
 
+## Table of Contents
+- [Izuku](#izuku)
+  * [Table of Contents](#table-of-contents)
+  * [Using Izuku](#using-izuku)
+  * [Frame Properties](#frame-properties)
+    + [`rowdata`](#-rowdata-)
+    + [`columns`](#-columns-)
+    + [`size`](#-size-)
+    + [`shape`](#-shape-)
+  * [Frame Methods](#frame-methods)
+    + [`data()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)](#-data--------https---imgshieldsio-badge-chainable-greensvg-style-plastic-)
+    + [`header()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)](#-header--------https---imgshieldsio-badge-chainable-greensvg-style-plastic-)
+    + [`column()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)](#-column--------https---imgshieldsio-badge-chainable-greensvg-style-plastic-)
+      - [Get a single column](#get-a-single-column)
+      - [Get multiple columns](#get-multiple-columns)
+    + [`row()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)](#-row--------https---imgshieldsio-badge-chainable-greensvg-style-plastic-)
+      - [Get a single row](#get-a-single-row)
+      - [Get multiple rows](#get-multiple-rows)
+    + [`head()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)](#-head--------https---imgshieldsio-badge-not-20chainable-redsvg-style-plastic-)
+    + [`tail()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)](#-tail--------https---imgshieldsio-badge-not-20chainable-redsvg-style-plastic-)
+    + [`show()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)](#-show--------https---imgshieldsio-badge-not-20chainable-redsvg-style-plastic-)
+    + [`info()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)](#-info--------https---imgshieldsio-badge-not-20chainable-redsvg-style-plastic-)
+  * [Chaining Methods](#chaining-methods)
+  * [Cloning and Building this Repository](#cloning-and-building-this-repository)
+
+
 ## Using Izuku
 
 ```js
