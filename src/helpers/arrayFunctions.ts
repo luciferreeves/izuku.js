@@ -42,15 +42,15 @@ export function range(
     throw new Error('step must be greater than 0');
   }
 
-  // If remove is specified, remove the values from the range
-  if (remove) {
-    for (let i = start; i <= end; i += step) {
+  // Generate an array from start to end
+  for (let i = start; i <= end; i += step) {
+    if (remove) {
       if (!remove.includes(i)) {
         rangeArray.push(i);
       }
+    } else {
+      rangeArray.push(i);
     }
   }
-
-  // return the range
   return rangeArray;
 }

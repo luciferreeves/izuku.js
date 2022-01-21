@@ -1,5 +1,5 @@
 import { data, generateHeader, setHeader, header } from './lib/frame';
-import { getSingleColumnDetails } from './lib/locate';
+import { getMultipleColumnDetails, getSingleColumnDetails } from './lib/locate';
 import { show, head, tail } from './lib/display';
 import { getSize, info } from './lib/info';
 import { flatten } from './lib/data';
@@ -31,12 +31,10 @@ class Izuku {
     if (typeof column === 'number' || typeof column === 'string') {
       const izSampler = getSingleColumnDetails(this, column);
       return new Izuku(izSampler.rowd, izSampler.rowh);
-    } else if (Array.isArray(column)) {
-      // check if each element is an integer
+    } else if (Array.isArray(column) || isArrayOfType(column, 'string')) {
       if (isArrayOfType(column, 'number')) {
-        // TODO
-      } else if (isArrayOfType(column, 'string')) {
-        // TODO
+        const izSampler = getMultipleColumnDetails(this, column);
+        return new Izuku(izSampler.rowd, izSampler.rowh);
       } else {
         throw new Error('Columns must be an array of integers or column names');
       }
