@@ -268,6 +268,44 @@ Data Types: string(26), number(8), object(1), undefined(1)
 Memory Usage: 550 bytes
 ```
 
+## Helper Methods
+
+Helper methods are methods that are used to help you with some common tasks. They are not chainable. They are not required to use the frame methods.
+
+### `range()`
+
+`range()` is a helper method that is used to create a an array of numbers. Here are the arguments and their default values:
+
+
+| Argument | Description | Default Value |
+|----------|-------------|-------------- |
+| `start`  | The start of the range | Required |
+| `end`    | The end of the range | Required |
+| `step`   | The step size of the range | 1 |
+| `remove` | An array of numbers which should not be included in the range | `undefined` |
+
+> Note: The `step` and `remove` arguments are optional. If you do not provide it, `step` will be set to 1 and `remove` will be set to `undefined`.
+
+#### Example
+
+```js
+range(0, 10);
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+range(0, 10, 2);
+// [0, 2, 4, 6, 8, 10]
+
+range(0, 10, 2, [1, 3, 5, 7, 9]);
+// [0, 2, 4, 6, 8]
+```
+
+#### Example with frame
+
+```js
+// Get all columns from 2 to 6
+const columns = frame.column(range(2, 6));
+```
+
 ## Chaining Methods
 
 Since, the row and column methods return a new frame, you can chain them together to get the data of multiple rows and columns. The following example shows how to get the data of multiple rows and columns.
