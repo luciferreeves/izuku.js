@@ -26,7 +26,7 @@ export function header(
   this: Frame,
   header: Array<string>
 ): Array<string> | any {
-  if (!header.length) {
+  if (!header || header.length) {
     this.columns = generateHeader(this.rowdata);
   } else {
     this.columns = setHeader(this.rowdata, header);

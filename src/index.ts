@@ -37,12 +37,8 @@ class Izuku {
       const izSampler = getSingleColumnDetails(this, column);
       return new Izuku(izSampler.rowd, izSampler.rowh);
     } else if (Array.isArray(column) || isArrayOfType(column, 'string')) {
-      if (isArrayOfType(column, 'number')) {
-        const izSampler = getMultipleColumnDetails(this, column);
-        return new Izuku(izSampler.rowd, izSampler.rowh);
-      } else {
-        throw new Error('Columns must be an array of integers or column names');
-      }
+      const izSampler = getMultipleColumnDetails(this, column);
+      return new Izuku(izSampler.rowd, izSampler.rowh);
     } else {
       throw new Error('Unexpected type of column');
     }
