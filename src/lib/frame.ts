@@ -24,14 +24,13 @@ export function data(
  */
 export function header(
   this: Frame,
-  header: Array<string>
+  header?: Array<string>
 ): Array<string> | any {
-  if (!header || header.length) {
+  if (!header?.length) {
     this.columns = generateHeader(this.rowdata);
   } else {
     this.columns = setHeader(this.rowdata, header);
   }
-
   return this;
 }
 
