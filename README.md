@@ -325,11 +325,8 @@ const data = [[...], [...], ...];
 const header = [...];
 const frame = new Frame(data, header);
 
-// get multiple rows on Index 2 and 3 and get the 'Name' and 'Age' columns of those rows
-const chainedData = frame.row([2, 3]).column(['Name', 'Age']);
-
-// print the rows
-chainedData.show();
+// get multiple rows on Index 2 and 3 and get the 'Name' and 'Age' columns of those rows and print the data
+frame.row([2, 3]).column(['Name', 'Age']).show();
 ```
 
 ## Cloning and Building this Repository
