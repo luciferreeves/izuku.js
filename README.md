@@ -77,7 +77,7 @@ The above code creates a frame and prints it to the console. It looks like this:
 
 ## Futher Documentation
 
-For more documentation, please take a look at the [Project Wiki](https://github.com/luciferreeves/izuku/wiki).
+For more documentation, please take a look at the [Project Wiki](https://github.com/luciferreeves/izuku.js/wiki).
 
 ## Cloning and Building this Repository
 
@@ -101,4 +101,4 @@ cd izuku.js && npm test
 
 ## Contributing
 
-To learn how to contribute to Izuku, please take a look at the [Contributing Guide](https://github.com/luciferreeves/izuku/blob/master/CONTRIBUTING.md). Make sure to also read the [Code of Conduct](https://github.com/luciferreeves/izuku/blob/master/CODE_OF_CONDUCT.md) before submitting a pull request.
+To learn how to contribute to Izuku, please take a look at the [Contributing Guide](https://github.com/luciferreeves/izuku.js/blob/master/CONTRIBUTING.md). Make sure to also read the [Code of Conduct](https://github.com/luciferreeves/izuku.js/blob/master/CODE_OF_CONDUCT.md) before submitting a pull request.
