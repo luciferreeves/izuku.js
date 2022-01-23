@@ -13,7 +13,8 @@
     "build": "rm -rf dist && rimraf ./build && tsc",
     "lint": "eslint . --ext .ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "test-single": "func() { env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\", \"resolveJsonModule\": true }' mocha -r ts-node/register \"$1\"; }; func"
+    "test-single": "func() { env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\", \"resolveJsonModule\": true }' mocha -r ts-node/register \"$1\"; }; func",
+    "docs:dev": "mkdocs serve"
   },
   "repository": {
     "type": "git",

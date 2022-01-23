@@ -1,0 +1,35 @@
+site_name: Izuku Documentation
+theme:
+  name: material
+  favicon: assets/logo.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+copyright: Copyright &copy; 2022 Izuku. Licensed under the MIT License.
+repo_url: https://github.com/luciferreeves/izuku.js
+repo_name: luciferreeves/izuku.js
+edit_uri: edit/master/docs/
+plugins:
+  - git-revision-date
+  - search
+extra:
+  generator: false
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences 
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Frame Properties: frame-properties.md
+  - Frame Methods: frame-methods.md
+  - Helper Methods: helper-methods.md
+  - Chaining Methods: chaining-methods.md
+
+    
+  
