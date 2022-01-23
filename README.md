@@ -99,6 +99,6 @@ Run tests:
 cd izuku.js && npm test
 ```
 
-## Contributing:
+## Contributing
 
 To learn how to contribute to Izuku, please take a look at the [Contributing Guide](https://github.com/luciferreeves/izuku/blob/master/CONTRIBUTING.md). Make sure to also read the [Code of Conduct](https://github.com/luciferreeves/izuku/blob/master/CODE_OF_CONDUCT.md) before submitting a pull request.
