@@ -1,5 +1,6 @@
 import { Frame } from '../index';
 import { isValidJSONObject } from '../helpers/arrayFunctions';
+import { readFileSync } from 'fs';
 
 /**
  * flattenArray - flattens a 2D into a single array
@@ -55,4 +56,32 @@ export function fromJSON(this: Frame, json: any): Frame {
   } else {
     throw new Error('Invalid JSON');
   }
+}
+
+/**
+ * fromCSV - converts a CSV string into a rowdata - framedata is a 2D array
+ * @param csv: the CSV string to be converted
+ * @returns the rowdata
+ */
+export function fromCSV(this: Frame, csvpath: string): Frame {
+  // read the csv file
+  const csv = readFileSync(csvpath, 'utf8');
+  const rowdata: any[][] = [];
+  const rows: string[] = csv.split('\n');
+  for (let i = 0; i < rows.length; i++) {
+    const row: string[] = rows[i].split(',');
+    rowdata.push(row);
+  }
+  this.rowdata = rowdata;
+  if (this.columns.length === 0) {
+    this.columns = rowdata[0];
+  }
+  // remove the first row
+  this.rowdata.shift();
+
+  // if last row contains only empty values, remove it
+  if (this.rowdata[this.rowdata.length - 1].every((item) => item === '')) {
+    this.rowdata.pop();
+  }
+  return this;
 }

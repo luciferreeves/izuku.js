@@ -1,6 +1,7 @@
 import { Frame } from '../src/index';
 import { expect } from 'chai';
 import JSONData from './support/users.json';
+import path = require('path');
 
 describe('data.ts', () => {
   describe('load frame from json file', () => {
@@ -39,6 +40,38 @@ describe('data.ts', () => {
       expect(new Frame().fromJSON(JSONData).rowdata).to.deep.equal(
         dataToExpect
       );
+    });
+  });
+  describe('load data from a CSV file', () => {
+    it('should load data from a CSV file', () => {
+      const csvPath = path.join(__dirname, 'support', 'users.csv');
+      const firstRow = [
+        '1',
+        'Durante',
+        'Toma',
+        'dtoma0@ovh.net',
+        'Female',
+        '55.96.246.188'
+      ];
+      const lastRow = [
+        '10',
+        'Niki',
+        'Ruos',
+        'nruos9@theatlantic.com',
+        'Female',
+        '110.74.213.22'
+      ];
+      const header = [
+        'id',
+        'first_name',
+        'last_name',
+        'email',
+        'gender',
+        'ip_address'
+      ];
+      expect(new Frame().fromCSV(csvPath).rowdata[0]).to.deep.equal(firstRow);
+      expect(new Frame().fromCSV(csvPath).rowdata[9]).to.deep.equal(lastRow);
+      expect(new Frame().fromCSV(csvPath).columns).to.deep.equal(header);
     });
   });
 });
