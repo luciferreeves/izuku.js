@@ -284,6 +284,17 @@ Data Types: string(26), number(8), object(1), undefined(1)
 Memory Usage: 550 bytes
 ```
 
+### `rangeIndex()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
+
+The `rangeIndex()` method is used to get the element at a particular index if the complete data was flattened. It takes an index as an argument. Index is zero-based.
+
+`rangeIndex()` does not return a new frame and therefore it is not chainable. It returns the element at the index and therefore a `console.log` is required to print the element.
+
+```js
+// get the element at index 2
+console.log(frame.rangeIndex(2));
+```
+
 ## Helper Methods
 
 Helper methods are methods that are used to help you with some common tasks. They are not chainable. They are not required to use the frame methods.
