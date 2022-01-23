@@ -1,6 +1,11 @@
 <p align="center">
   <img width="100%" src="./render/Izuku.png">
 </p>
+<p align="center">
+  <a href="https://luciferreeves.github.io/izuku.js" target="_blank">
+    <img width="100%" src="./render/doc.gif">
+  </a>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/luciferreeves/izuku.js/Node.js%20CI"> <img src="https://img.shields.io/github/license/luciferreeves/izuku.js"> <img src="https://img.shields.io/github/issues-raw/luciferreeves/izuku.js">
@@ -77,7 +82,7 @@ The above code creates a frame and prints it to the console. It looks like this:
 
 ## Futher Documentation
 
-For more documentation, please take a look at the [Project Wiki](https://github.com/luciferreeves/izuku.js/wiki).
+For more documentation, please take a look at the [Documentation](https://luciferreeves.github.io/izuku.js).
 
 ## Cloning and Building this Repository
 
