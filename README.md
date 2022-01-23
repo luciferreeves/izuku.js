@@ -248,6 +248,29 @@ const headers = [...];
 const frame = new Frame().header(headers).fromCSV(csvPath);
 ```
 
+### `find()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
+
+The `find()` method is used to find the rows that match the given condition. It takes a string or a number as an argument which is needed to be found in the frame. Optionally, it also takes an `options` object as as the second argument.
+
+The valid options are defined below:
+
+  - `row`: The row index to seach in. Can also be an array of row indexes.
+  - `column`: The column name or index to search in. Can also be an array of column names or indexes.
+  - `strict`: If `true`, the search will be performed on the exact value. If `false`, the search will be performed on the value as a substring. Default is `false`.
+
+> **Hint**: You can also combine the `range()` helper method to pass a range of rows or columns.
+
+```js
+// find all the rows with value 'John' in column 'Name'
+const row = frame.find('John', {column: 'Name'});
+
+// find all the rows with value 'John' in columns 0, 1 and 2. Perform a strict search
+const row = frame.find('John', {column: [0, 1, 2], strict: true});
+
+// find all the rows with value 'John' in columns 0, 1 and 2 and rows 3, 4 and 5. Perform a non-strict search
+const row = frame.find('John', {column: [0, 1, 2], row: [3, 4, 5], strict: false});
+```
+
 
 ### `head()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
 
