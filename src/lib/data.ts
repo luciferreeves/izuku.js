@@ -75,9 +75,9 @@ export function fromCSV(this: Frame, csvpath: string): Frame {
   this.rowdata = rowdata;
   if (this.columns.length === 0) {
     this.columns = rowdata[0];
+    // remove the first row
+    this.rowdata.shift();
   }
-  // remove the first row
-  this.rowdata.shift();
 
   // if last row contains only empty values, remove it
   if (this.rowdata[this.rowdata.length - 1].every((item) => item === '')) {
