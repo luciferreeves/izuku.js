@@ -214,6 +214,20 @@ const rows = frame.row([2, 3]);
 rows.show();
 ```
 
+### `fromJSON()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
+
+The `fromJSON()` method is used to create a frame from a JSON object. It takes the JSON object as an argument. `fromJSON()` method returns a new frame. You can chain other frame methods on the returned frame.
+
+> **Note:** The `fromJSON()` method does not take nested JSON objects as an argument. If you have a nested JSON object, flatten it using the `flattenJSON()` helper function first.
+
+```js
+const json = [{...}, {...}, ...];
+const frame = new Frame().fromJSON(json);
+
+// ...continue with other frame methods
+```
+
+
 ### `head()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
 
 The `head()` method is used to get the first `n` rows of the frame. It takes the number of rows as an argument. If no argument is passed, it will return the first 5 rows. If the argument is greater than the number of rows in the frame, it will return the entire frame.
@@ -321,8 +335,8 @@ range(0, 10);
 range(0, 10, 2);
 // [0, 2, 4, 6, 8, 10]
 
-range(0, 10, 2, [1, 3, 5, 7, 9]);
-// [0, 2, 4, 6, 8]
+range(0, 10, 1, [1, 3, 5, 7, 9]);
+// [0, 2, 4, 6, 8, 10]
 ```
 
 #### Example with frame
@@ -336,6 +350,29 @@ const frame = new Frame([[...], [...], ...]);
 
 // Get all columns from 2 to 6
 const columns = frame.column(range(2, 6));
+```
+
+### `flattenJSON()`
+
+`flattenJSON()` is a helper method that is used to flatten a JSON object. Here are the arguments and their default values:
+
+| Argument | Description                                                   | Default Value |
+| -------- | ------------------------------------------------------------- | ------------- |
+| `json`   | The JSON object to flatten                                   | Required      |
+
+#### Example:
+
+```js
+import { flattenJSON } from 'izuku';
+const flattened = flattenJSON({
+  a: {
+    b: {
+      c: 'hello'
+    }
+  }
+});
+
+// flattened is [ a.b.c: 'hello' ]
 ```
 
 ## Chaining Methods
