@@ -22,4 +22,9 @@ describe('info.ts', () => {
       frame.info();
     });
   });
+  describe('Print the element at rangeIndex 32', () => {
+    it('should print the element at rangeIndex 32', () => {
+      expect(frame.rangeIndex(32)).to.equal(null);
+    });
+  });
 });

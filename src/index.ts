@@ -3,7 +3,8 @@ import {
   getMultipleColumnDetails,
   getSingleColumnDetails,
   getSingleRowDetails,
-  getMultipleRowDetails
+  getMultipleRowDetails,
+  rangeIndex
 } from './lib/locate';
 import { show, head, tail } from './lib/display';
 import { getSize, info } from './lib/info';
@@ -56,6 +57,9 @@ class Izuku {
   };
   public flatten = () => {
     return flatten(this.rowdata);
+  };
+  public rangeIndex = (index: number) => {
+    return rangeIndex(this, index);
   };
 }
 

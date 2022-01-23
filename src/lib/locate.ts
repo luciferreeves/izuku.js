@@ -1,3 +1,4 @@
+import { flatten } from './data';
 interface Izuku {
   rowdata: unknown[][];
   columns: string[];
@@ -109,4 +110,13 @@ export function getMultipleRowDetails(iz: Izuku, rows: Array<number>) {
     extractedRows.push(rowDetails.rowd[0]);
   });
   return { rowd: extractedRows, rowh: iz.columns };
+}
+
+/**
+ * rangeIndex returns the element at the specified index of the complete frame
+ * @param index: the index of the element to be returned
+ * @returns the element at the specified index of the complete frame
+ */
+export function rangeIndex(iz: Izuku, index: number): any {
+  return flatten(iz.rowdata)[index];
 }
