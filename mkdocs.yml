@@ -13,7 +13,6 @@ repo_url: https://github.com/luciferreeves/izuku.js
 repo_name: luciferreeves/izuku.js
 edit_uri: edit/master/docs/
 plugins:
-  - git-revision-date
   - search
 extra:
   generator: false
