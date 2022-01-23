@@ -8,12 +8,12 @@
     "dist"
   ],
   "scripts": {
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\", \"resolveJsonModule\": true }' mocha -r ts-node/register 'tests/**/*.ts'",
     "start:dev": "nodemon",
     "build": "rm -rf dist && rimraf ./build && tsc",
     "lint": "eslint . --ext .ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "test-single": "func() { env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register \"$1\"; }; func"
+    "test-single": "func() { env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\", \"resolveJsonModule\": true }' mocha -r ts-node/register \"$1\"; }; func"
   },
   "repository": {
     "type": "git",

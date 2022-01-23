@@ -54,3 +54,46 @@ export function range(
   }
   return rangeArray;
 }
+
+/**
+ * flattenJSON - converts a nested JSON object into a simple JSON object
+ * @param object: the object to be flattened
+ * @returns the flattened object
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function flattenJSON(data: any): any {
+  const result: any = {};
+  function recurse(cur: any, prop: string) {
+    if (Object(cur) !== cur) {
+      result[prop] = cur;
+    } else if (Array.isArray(cur)) {
+      // eslint-disable-next-line no-var
+      for (var i = 0, l = cur.length; i < l; i++)
+        recurse(cur[i], prop + '[' + i + ']');
+      if (l == 0) result[prop] = [];
+    } else {
+      let isEmpty = true;
+      for (const p in cur) {
+        isEmpty = false;
+        recurse(cur[p], prop ? prop + '.' + p : p);
+      }
+      if (isEmpty && prop) result[prop] = {};
+    }
+  }
+  recurse(data, '');
+  return result;
+}
+
+/**
+ * isValidJSONObject - checks if the object is a valid JSON object or a valid JSON string
+ * @param object: the object to be checked
+ * @returns true if the object is a valid JSON object or a valid JSON string
+ */
+export function isValidJSONObject(object: any): boolean {
+  try {
+    JSON.parse(JSON.stringify(object));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}

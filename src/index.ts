@@ -8,8 +8,8 @@ import {
 } from './lib/locate';
 import { show, head, tail } from './lib/display';
 import { getSize, info } from './lib/info';
-import { flatten } from './lib/data';
-import { isArrayOfType, range } from './helpers/arrayFunctions';
+import { flatten, fromJSON } from './lib/data';
+import { isArrayOfType, range, flattenJSON } from './helpers/arrayFunctions';
 
 class Izuku {
   rowdata: unknown[][] = [];
@@ -61,6 +61,7 @@ class Izuku {
   public rangeIndex = (index: number) => {
     return rangeIndex(this, index);
   };
+  public fromJSON = fromJSON;
 }
 
 class Frame extends Izuku {
@@ -69,4 +70,4 @@ class Frame extends Izuku {
   }
 }
 
-export { Frame, range };
+export { Frame, range, flattenJSON };

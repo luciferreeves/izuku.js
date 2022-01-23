@@ -63,12 +63,16 @@ export function setHeader(rowdata: any[][], header: any[]): Array<string> {
  */
 
 export function generateHeader(rd: Array<any[]>): Array<string> {
-  const maxSizedArrayLength = rd.reduce((acc, curr) => {
-    return acc.length > curr.length ? acc : curr;
-  }).length;
-  const header: Array<string> = [];
-  for (let i = 0; i < maxSizedArrayLength; i++) {
-    header.push(`Column ${i + 1}`);
+  if (rd?.length) {
+    const maxSizedArrayLength = rd.reduce((acc, curr) => {
+      return acc.length > curr.length ? acc : curr;
+    }).length;
+    const header: Array<string> = [];
+    for (let i = 0; i < maxSizedArrayLength; i++) {
+      header.push(`Column ${i + 1}`);
+    }
+    return header;
+  } else {
+    return [];
   }
-  return header;
 }

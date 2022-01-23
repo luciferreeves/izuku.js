@@ -40,7 +40,7 @@ function getTable(
  * @throws Error if the frame is empty
  */
 export function show(this: Frame): void {
-  if (!this.rowdata.length) {
+  if (this.rowdata.length === 0) {
     throw new Error('Set data before printing');
   }
   const numberOfRows = this.rowdata.length;
@@ -74,7 +74,7 @@ export function show(this: Frame): void {
  * @throws Error if the frame is empty
  */
 export function head(this: Frame, n = 5): void {
-  if (!this.rowdata.length) {
+  if (this.rowdata.length === 0) {
     throw new Error('Set data before printing');
   }
   // Check if n is greater than the number of rows
@@ -95,7 +95,7 @@ export function head(this: Frame, n = 5): void {
  * @throws Error if the frame is empty
  */
 export function tail(this: Frame, n = 5): void {
-  if (!this.rowdata.length) {
+  if (this.rowdata.length === 0) {
     throw new Error('Set data before printing');
   }
   // Check if n is greater than the number of rows
