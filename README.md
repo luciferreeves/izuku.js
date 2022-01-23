@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/workflow/status/luciferreeves/izuku.js/Node.js%20CI"> <img src="https://img.shields.io/tokei/lines/github/luciferreeves/izuku.js?label=lines%20of%20code"> <img src="https://img.shields.io/github/license/luciferreeves/izuku.js"> <img src="https://img.shields.io/github/issues-raw/luciferreeves/izuku.js">
+  <img src="https://img.shields.io/github/workflow/status/luciferreeves/izuku.js/Node.js%20CI"> <img src="https://img.shields.io/github/license/luciferreeves/izuku.js"> <img src="https://img.shields.io/github/issues-raw/luciferreeves/izuku.js">
 </p>
 
 # Izuku
@@ -14,7 +14,17 @@ The core of Izuku is the `Frame` class that represents a 2D array of data. It is
 
 > **Note**: Izuku is not a replacement for Pandas and should not be used for data analysis. It is designed to be used for data visualization and debugging. It can, however, handle large datasets and help you understand your data better but comes at some cost in performance. Since, Pandas is based on NumPy, and NumPy is written in C, Pandas would be much faster than Izuku.
 
-## Frames
+## Installation
+
+Izuku is available on [npm](https://www.npmjs.com/package/izuku). To install Izuku, run the following command:
+
+```bash
+npm install izuku
+```
+
+## Basic Usage
+
+As defined above, the basic usage of Izuku is to create a `Frame` object and manipulate it. You can use either an 2D array, a JSON Object, or a CSV File to create a `Frame`. The following example creates a `Frame` from a 2D array:
 
 ```js
 import { Frame } from 'izuku';
@@ -267,7 +277,8 @@ const row = frame.find('John', {column: 'Name'});
 // find all the rows with value 'John' in columns 0, 1 and 2. Perform a strict search
 const row = frame.find('John', {column: [0, 1, 2], strict: true});
 
-// find all the rows with value 'John' in columns 0, 1 and 2 and rows 3, 4 and 5. Perform a non-strict search
+// find all the rows with value 'John' in columns 0, 1 and 2 and rows 3, 4 and 5.
+// Perform a non-strict search
 const row = frame.find('John', {column: [0, 1, 2], row: [3, 4, 5], strict: false});
 ```
 
