@@ -227,6 +227,27 @@ const frame = new Frame().fromJSON(json);
 // ...continue with other frame methods
 ```
 
+### `fromCSV()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
+
+The `fromCSV()` method is used to create a frame from a CSV string. It takes the CSV string as an argument. `fromCSV()` method returns a new frame. You can chain other frame methods on the returned frame.
+
+> **Note:** The `fromCSV()` automatically assigns the column names from the first row of the CSV string. If you do not want to use the column names, you can use the `header()` method to assign the column names first.
+
+```js
+
+const path = require('path');
+const csvPath = path.join(__dirname, 'data.csv');
+
+// Sets the column names from the first row of the CSV
+const frame = new Frame().fromCSV(csvPath);
+
+// Define the column names manually
+const headers = [...];
+
+// Set the header first (important) then read the CSV
+const frame = new Frame().header(headers).fromCSV(csvPath);
+```
+
 
 ### `head()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
 
