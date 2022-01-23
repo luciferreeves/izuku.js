@@ -18,7 +18,7 @@ export function getSize(rowdata: any[]): number {
  */
 export function info(this: Frame): void {
   if (this.rowdata.length === 0) {
-    throw new Error('Frame is empty');
+    console.log('Frame is empty');
   } else {
     const info: Array<any[]> = [];
     info.push(['#', 'Column Name', 'Types', 'Empty Values']);

@@ -1,6 +1,7 @@
 import { Frame } from '../src/index';
 import { expect } from 'chai';
 import JSONData from './support/users.json';
+import { data, header } from './support/people';
 import path = require('path');
 
 describe('data.ts', () => {
@@ -72,6 +73,17 @@ describe('data.ts', () => {
       expect(new Frame().fromCSV(csvPath).rowdata[0]).to.deep.equal(firstRow);
       expect(new Frame().fromCSV(csvPath).rowdata[9]).to.deep.equal(lastRow);
       expect(new Frame().fromCSV(csvPath).columns).to.deep.equal(header);
+    });
+  });
+  describe('find', () => {
+    it('should search for a specific value', () => {
+      const frame = new Frame(data, header).find('Victor', {
+        column: 'Name',
+        row: 6,
+        strict: false
+      });
+      expect(frame.rowdata).to.deep.equal([data[6]]);
+      expect(frame.columns).to.deep.equal(header);
     });
   });
 });

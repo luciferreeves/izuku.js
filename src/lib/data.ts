@@ -85,3 +85,111 @@ export function fromCSV(this: Frame, csvpath: string): Frame {
   }
   return this;
 }
+
+/**
+ * searchValue = searchValue all the rows that contain the passed string or number
+ * @param value: the value to be searched
+ * @returns the rowdata that contains the value
+ */
+export function searchValue(
+  iz: Frame,
+  value: string | number,
+  options?: {
+    row?: number | Array<number>;
+    column?: number | string | Array<number> | Array<string>;
+    strict?: boolean;
+  }
+): any[][] {
+  options = options || {};
+  if (!options?.strict) {
+    options['strict'] = false;
+  }
+  // if no options are passed search everything
+  if (!options || (!options.row && !options.column)) {
+    const rowdata: any[][] = [];
+    for (let i = 0; i < iz.rowdata.length; i++) {
+      for (let j = 0; j < iz.rowdata[i].length; j++) {
+        if (options.strict) {
+          if (String(iz.rowdata[i][j]) === String(value)) {
+            rowdata.push(iz.rowdata[i]);
+            break;
+          }
+        } else {
+          if (String(iz.rowdata[i][j]).includes(String(value))) {
+            rowdata.push(iz.rowdata[i]);
+            break;
+          }
+        }
+      }
+    }
+    return rowdata;
+  } else if (options.row && !options.column) {
+    // if only row is passed, search the row
+    const rowdata: any[][] = [];
+    // get those particular rows
+    const rows = iz.row(options.row).rowdata;
+    for (let i = 0; i < rows.length; i++) {
+      for (let j = 0; j < rows[i].length; j++) {
+        if (options.strict) {
+          if (String(rows[i][j]) === String(value)) {
+            rowdata.push(rows[i]);
+            break;
+          }
+        } else {
+          if (String(rows[i][j]).includes(String(value))) {
+            rowdata.push(rows[i]);
+            break;
+          }
+        }
+      }
+    }
+    return rowdata;
+  } else if (options.column && !options.row) {
+    // if only column is passed, search the column
+    const columnIndexes: number[] = [];
+    // get those particular columns
+    const columns = iz.column(options.column).rowdata;
+    console.log(columns);
+    for (let i = 0; i < columns.length; i++) {
+      for (let j = 0; j < columns[i].length; j++) {
+        if (options.strict) {
+          if (String(columns[i][j]) === String(value)) {
+            columnIndexes.push(i);
+            break;
+          }
+        } else {
+          if (String(columns[i][j]).includes(String(value))) {
+            columnIndexes.push(i);
+            break;
+          }
+        }
+      }
+    }
+    console.log(columnIndexes);
+    return iz.row(columnIndexes).rowdata;
+  } else if (options.column && options.row) {
+    // if both row and column are passed, search the row and column
+    // get those particular rows
+    const rows = iz.row(options.row);
+    const columns = rows.column(options.column).rowdata;
+    const columnIndexes: number[] = [];
+    for (let i = 0; i < columns.length; i++) {
+      for (let j = 0; j < columns[i].length; j++) {
+        if (options.strict) {
+          if (String(columns[i][j]) === String(value)) {
+            columnIndexes.push(i);
+            break;
+          }
+        } else {
+          if (String(columns[i][j]).includes(String(value))) {
+            columnIndexes.push(i);
+            break;
+          }
+        }
+      }
+    }
+    return rows.row(columnIndexes).rowdata;
+  } else {
+    throw new Error('Invalid options');
+  }
+}

@@ -8,7 +8,7 @@ import {
 } from './lib/locate';
 import { show, head, tail } from './lib/display';
 import { getSize, info } from './lib/info';
-import { flatten, fromJSON, fromCSV } from './lib/data';
+import { flatten, fromJSON, fromCSV, searchValue } from './lib/data';
 import { isArrayOfType, range, flattenJSON } from './helpers/arrayFunctions';
 
 class Izuku {
@@ -63,6 +63,17 @@ class Izuku {
   };
   public fromJSON = fromJSON;
   public fromCSV = fromCSV;
+  public find = (
+    value: string | number,
+    options?: {
+      row?: number | Array<number>;
+      column?: number | string | Array<number> | Array<string>;
+      strict?: boolean;
+    }
+  ) => {
+    const rowdata = searchValue(this, value, options);
+    return new Izuku(rowdata, this.columns);
+  };
 }
 
 class Frame extends Izuku {

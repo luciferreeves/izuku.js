@@ -42,18 +42,22 @@ export function header(
  */
 
 export function setHeader(rowdata: any[][], header: any[]): Array<string> {
-  const maxSizedArrayLength = rowdata.reduce((acc, curr) => {
-    return acc.length > curr.length ? acc : curr;
-  }).length;
-  const newHeaderArray = Array(maxSizedArrayLength).fill('');
-  for (let i = 0; i < maxSizedArrayLength; i++) {
-    if (header[i]) {
-      newHeaderArray[i] = header[i];
-    } else {
-      newHeaderArray[i] = `Column ${i + 1}`;
+  if (rowdata?.length) {
+    const maxSizedArrayLength = rowdata.reduce((acc, curr) => {
+      return acc.length > curr.length ? acc : curr;
+    }).length;
+    const newHeaderArray = Array(maxSizedArrayLength).fill('');
+    for (let i = 0; i < maxSizedArrayLength; i++) {
+      if (header[i]) {
+        newHeaderArray[i] = header[i];
+      } else {
+        newHeaderArray[i] = `Column ${i + 1}`;
+      }
     }
+    return newHeaderArray;
+  } else {
+    return header;
   }
-  return newHeaderArray;
 }
 
 /**
