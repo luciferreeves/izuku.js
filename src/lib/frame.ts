@@ -89,6 +89,8 @@ export function generateHeader(rd: Array<any[]>): Array<string> {
 export function title(this: Frame, title?: string): string | any {
   if (title) {
     this.tableTitle = title;
+  } else {
+    this.tableTitle = '';
   }
   return this;
 }

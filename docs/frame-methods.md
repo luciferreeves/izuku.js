@@ -39,6 +39,21 @@ frame.header();
 // frame.header([]);
 ```
 
+### `title()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
+
+The `title()` method is used to modify the title of the frame. Title is optional.
+
+> **Note:** If you use title method without passing any argument, it will reset the title to default title (Remember: title is optional).
+
+```js
+// modify the title
+const newTitle = 'New Title';
+frame.title(newTitle);
+
+// Reset the title to default
+frame.title();
+```
+
 ### `column()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
 
 The `column()` method is used to get the column data of a particular column. It takes the column name or the index as an argument. It can also take an array of column names or indexes as an argument to get multiple columns.
