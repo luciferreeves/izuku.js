@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const Buffer = require('buffer/').Buffer;
-
 const ECMA_SIZES = {
   STRING: 2,
   BOOLEAN: 4,
