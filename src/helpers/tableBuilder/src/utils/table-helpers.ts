@@ -8,7 +8,7 @@ import {
   DEFAULT_COLUMN_LEN,
   DEFAULT_ROW_ALIGNMENT,
   DEFAULT_ROW_SEPARATOR,
-  DEFAULT_HEADER_FONT_COLOR,
+  DEFAULT_HEADER_FONT_COLOR
 } from './table-constants';
 
 const max = (a: number, b: number) => Math.max(a, b);
@@ -33,7 +33,7 @@ export const convertRawRowOptionsToStandard = (
   if (options) {
     return {
       color: options.color as COLOR,
-      separator: options.separator || DEFAULT_ROW_SEPARATOR,
+      separator: options.separator || DEFAULT_ROW_SEPARATOR
     };
   }
   return undefined;
@@ -44,7 +44,7 @@ export const createTableHorizontalBorders = (
     left,
     mid,
     right,
-    other,
+    other
   }: { left: string; mid: string; right: string; other: string },
   column_lengths: number[]
 ) => {
@@ -67,7 +67,7 @@ export const createTableHorizontalBorders = (
 
 export const createColumFromOnlyName = (name: string): Column => ({
   name,
-  title: name,
+  title: name
 });
 export const createColumFromComputedColumn = (
   column: ComputedColumn
@@ -77,7 +77,7 @@ export const createColumFromComputedColumn = (
   ...objIfExists('color', column.color as COLOR),
   ...objIfExists('maxLen', column.maxLen),
   ...objIfExists('minLen', column.minLen),
-  alignment: column.alignment || DEFAULT_ROW_ALIGNMENT,
+  alignment: column.alignment || DEFAULT_ROW_ALIGNMENT
 });
 
 export const createRow = (
@@ -87,7 +87,7 @@ export const createRow = (
 ): Row => ({
   color,
   separator,
-  text,
+  text
 });
 
 export const findLenOfColumn = (column: Column, rows: Row[]): number => {

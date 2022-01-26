@@ -7,14 +7,14 @@ import {
   DEFAULT_HEADER_ALIGNMENT,
   DEFAULT_HEADER_FONT_COLOR,
   DEFAULT_ROW_ALIGNMENT,
-  DEFAULT_ROW_FONT_COLOR,
+  DEFAULT_ROW_FONT_COLOR
 } from '../utils/table-constants';
 import {
   cellText,
   createHeaderAsRow,
   createRow,
   getWidthLimitedColumnsArray,
-  renderTableHorizontalBorders,
+  renderTableHorizontalBorders
 } from '../utils/table-helpers';
 import TableInternal from './internal-table';
 import { preProcessColumns, preProcessRows } from './table-pre-processors';

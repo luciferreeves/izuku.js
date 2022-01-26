@@ -3,20 +3,20 @@ import {
   ComplexOptions,
   ComputedColumn,
   RowFilterFunction,
-  RowSortFunction,
+  RowSortFunction
 } from '../models/external-table';
 import { Column, TableStyleDetails } from '../models/internal-table';
 import {
   DEFAULT_TABLE_STYLE,
   DEFAULT_ROW_ALIGNMENT,
   DEFAULT_ROW_FONT_COLOR,
-  DEFAULT_ROW_SEPARATOR,
+  DEFAULT_ROW_SEPARATOR
 } from '../utils/table-constants';
 import {
   createColumFromComputedColumn,
   createColumFromOnlyName,
   createRow,
-  RowOptions,
+  RowOptions
 } from '../utils/table-helpers';
 import { rawColumnToInternalColumn } from './input-converter';
 import { renderTable } from './internal-table-printer';
@@ -50,7 +50,7 @@ class TableInternal {
     this.columns = columns.map((column) => ({
       name: column,
       title: column,
-      alignment: DEFAULT_ROW_ALIGNMENT,
+      alignment: DEFAULT_ROW_ALIGNMENT
     }));
   }
 

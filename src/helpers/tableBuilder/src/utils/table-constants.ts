@@ -17,27 +17,27 @@ export const DEFAULT_TABLE_STYLE: TableStyleDetails = {
     left: '┌',
     mid: '┬',
     right: '┐',
-    other: '─',
+    other: '─'
   },
   headerBottom: {
     left: '├',
     mid: '┼',
     right: '┤',
-    other: '─',
+    other: '─'
   },
   tableBottom: {
     left: '└',
     mid: '┴',
     right: '┘',
-    other: '─',
+    other: '─'
   },
   vertical: '│',
   rowSeparator: {
     left: '├',
     mid: '┼',
     right: '┤',
-    other: '─',
-  },
+    other: '─'
+  }
 };
 
 export const ALIGNMENTS = ['right', 'left', 'center'];
@@ -52,7 +52,7 @@ export const COLORS = [
   'cyan',
   'crimson',
   'white_bold',
-  'reset',
+  'reset'
 ];
 
 export const DEFAULT_ROW_FONT_COLOR: COLOR = 'white';

@@ -9,7 +9,7 @@ export const objIfExists = (key: string, val: any) => {
   }
 
   return {
-    [key]: val,
+    [key]: val
   };
 };
 
@@ -21,5 +21,5 @@ export const rawColumnToInternalColumn = (
   ...objIfExists('color', column.color as COLOR),
   ...objIfExists('maxLen', column.maxLen),
   ...objIfExists('minLen', column.minLen),
-  alignment: column.alignment || DEFAULT_ROW_ALIGNMENT,
+  alignment: column.alignment || DEFAULT_ROW_ALIGNMENT
 });
