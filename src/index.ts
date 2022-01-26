@@ -21,7 +21,7 @@ class Izuku {
   constructor(
     rowdata?: Array<unknown[]>,
     columns?: Array<string>,
-    title?: string
+    tableTitle?: string
   ) {
     this.rowdata = rowdata || [];
     this.columns = columns
@@ -29,7 +29,7 @@ class Izuku {
       : generateHeader(this.rowdata);
     this.size = getSize(this.rowdata);
     this.shape = `${this.rowdata.length} x ${this.columns.length}`;
-    this.tableTitle = title || '';
+    this.tableTitle = tableTitle || '';
   }
 
   public data = data;

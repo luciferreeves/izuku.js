@@ -74,7 +74,10 @@ export function info(this: Frame): void {
         .split(' x ')[1]
         .trim()} columns`
     );
-    displayTable(info);
+    displayTable({
+      data: info,
+      title: this.tableTitle
+    });
     console.log(`Data Types: ${dataTypesString}`);
     console.log(`Memory Usage: ${sizeof(this)} bytes`);
   }
