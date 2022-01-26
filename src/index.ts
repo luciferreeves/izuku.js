@@ -18,13 +18,18 @@ class Izuku {
   shape = '0 x 0';
   tableTitle = '';
 
-  constructor(rowdata?: Array<unknown[]>, columns?: Array<string>) {
+  constructor(
+    rowdata?: Array<unknown[]>,
+    columns?: Array<string>,
+    title?: string
+  ) {
     this.rowdata = rowdata || [];
     this.columns = columns
       ? setHeader(this.rowdata, columns)
       : generateHeader(this.rowdata);
     this.size = getSize(this.rowdata);
     this.shape = `${this.rowdata.length} x ${this.columns.length}`;
+    this.tableTitle = title || '';
   }
 
   public data = data;
