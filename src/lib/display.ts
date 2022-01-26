@@ -1,5 +1,6 @@
 import { Frame } from '../index';
 import { table } from 'table';
+import { Table } from '../helpers/tableBuilder';
 
 /**
  * getTable returns the data compatible with table.table
@@ -35,6 +36,40 @@ function getTable(
 }
 
 /**
+ * displayTable prints the table to the console
+ * @param rowdata the rowdata to be sent to the frame
+ */
+export function displayTable(rowdata: any[][]): void {
+  // Convert row data into object with keys and values, keys are the column names stored in rowdata[0]
+  const headerObject: any = [];
+  rowdata[0].forEach((column) => {
+    headerObject.push({
+      name: column,
+      alignment: 'left',
+      paddingLeft: 2,
+      bold: true,
+      paddingRight: 2
+    });
+  });
+  const table = new Table({
+    columns: headerObject
+  });
+
+  const rowdataObject = rowdata.map((row) => {
+    const rowObject: any = {};
+    row.forEach((value, index) => {
+      rowObject[rowdata[0][index]] = value;
+    });
+    return rowObject;
+  });
+
+  // remove the first row from rowdataObject
+  const rowdataObjectWithoutHeader = rowdataObject.slice(1);
+  table.addRows(rowdataObjectWithoutHeader);
+  table.printTable();
+}
+
+/**
  * show prints the frame in console.table format
  * @returns the current frame
  * @throws Error if the frame is empty
@@ -63,7 +98,7 @@ export function show(this: Frame): void {
         numberOfRows - 1
       ];
       const combinedRow = [...firstThreeRows, [...middleRow], ...lastThreeRows];
-      console.log(table(getTable(combinedRow, this.columns, indexRow)));
+      displayTable(getTable(combinedRow, this.columns, indexRow));
     }
   }
 }
