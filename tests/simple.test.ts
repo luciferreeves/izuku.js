@@ -5,6 +5,6 @@ const frame = new Frame(data, header);
 
 describe('Print a frame', () => {
   it('should print a frame', () => {
-    frame.show();
+    frame.title('Simple Frame').show();
   });
 });

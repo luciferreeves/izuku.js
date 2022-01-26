@@ -80,3 +80,15 @@ export function generateHeader(rd: Array<any[]>): Array<string> {
     return [];
   }
 }
+
+/**
+ * title sets the title of the frame
+ * @param title: the title to be attached to the frame
+ * @returns the current frame
+ */
+export function title(this: Frame, title?: string): string | any {
+  if (title) {
+    this.tableTitle = title;
+  }
+  return this;
+}

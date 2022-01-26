@@ -1,4 +1,4 @@
-import { data, generateHeader, setHeader, header } from './lib/frame';
+import { data, generateHeader, setHeader, header, title } from './lib/frame';
 import {
   getMultipleColumnDetails,
   getSingleColumnDetails,
@@ -16,6 +16,7 @@ class Izuku {
   columns: string[];
   size = 0;
   shape = '0 x 0';
+  tableTitle = '';
 
   constructor(rowdata?: Array<unknown[]>, columns?: Array<string>) {
     this.rowdata = rowdata || [];
@@ -74,6 +75,7 @@ class Izuku {
     const rowdata = searchValue(this, value, options);
     return new Izuku(rowdata, this.columns);
   };
+  public title = title;
 }
 
 class Frame extends Izuku {

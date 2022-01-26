@@ -11,8 +11,9 @@ import { Table } from '../helpers/tableBuilder';
 function getTable(
   rowdata: unknown[][],
   columns: string[],
-  indexRow?: any[]
-): any[] {
+  indexRow?: any[],
+  title?: any
+): any {
   const maxSizedArrayLength = rowdata.reduce((acc, curr) => {
     return acc.length > curr.length ? acc : curr;
   }).length;
@@ -31,17 +32,20 @@ function getTable(
     }
     frameRows.push(rowArray);
   }
-  return [['Index', ...columns], ...frameRows];
+  return {
+    title: title ? title : '',
+    data: [['Index', ...columns], ...frameRows]
+  };
 }
 
 /**
  * displayTable prints the table to the console
  * @param rowdata the rowdata to be sent to the frame
  */
-export function displayTable(rowdata: any[][]): void {
+export function displayTable(rowdata: any): void {
   // Convert row data into object with keys and values, keys are the column names stored in rowdata[0]
   const headerObject: any = [];
-  rowdata[0].forEach((column) => {
+  rowdata.data[0].forEach((column: any) => {
     headerObject.push({
       name: column,
       alignment: 'left',
@@ -51,13 +55,14 @@ export function displayTable(rowdata: any[][]): void {
     });
   });
   const table = new Table({
-    columns: headerObject
+    columns: headerObject,
+    title: String(rowdata.title)
   });
 
-  const rowdataObject = rowdata.map((row) => {
+  const rowdataObject = rowdata.data.map((row: any[]) => {
     const rowObject: any = {};
-    row.forEach((value, index) => {
-      rowObject[rowdata[0][index]] = value;
+    row.forEach((value: any, index: string | number) => {
+      rowObject[rowdata.data[0][index]] = value;
     });
     return rowObject;
   });
@@ -79,7 +84,9 @@ export function show(this: Frame): void {
   } else {
     const numberOfRows = this.rowdata.length;
     if (numberOfRows < 7) {
-      displayTable(getTable(this.rowdata, this.columns));
+      displayTable(
+        getTable(this.rowdata, this.columns, undefined, this.tableTitle)
+      );
     } else {
       const firstThreeRows = this.rowdata.slice(0, 3);
       const lastThreeRows = this.rowdata.slice(numberOfRows - 3);
@@ -97,7 +104,9 @@ export function show(this: Frame): void {
         numberOfRows - 1
       ];
       const combinedRow = [...firstThreeRows, [...middleRow], ...lastThreeRows];
-      displayTable(getTable(combinedRow, this.columns, indexRow));
+      displayTable(
+        getTable(combinedRow, this.columns, indexRow, this.tableTitle)
+      );
     }
   }
 }
@@ -120,7 +129,7 @@ export function head(this: Frame, n = 5): void {
     // Generate the index row
     const indexRow = this.rowdata.map((row, index) => index);
     const data = this.rowdata.slice(0, n);
-    displayTable(getTable(data, this.columns, indexRow));
+    displayTable(getTable(data, this.columns, indexRow, this.tableTitle));
   }
 }
 
@@ -144,6 +153,6 @@ export function tail(this: Frame, n = 5): void {
     const data = this.rowdata.slice(this.rowdata.length - n);
     // Slice the index row to match the data
     const slicedIndexRow = indexRow.slice(indexRow.length - n);
-    displayTable(getTable(data, this.columns, slicedIndexRow));
+    displayTable(getTable(data, this.columns, slicedIndexRow, this.tableTitle));
   }
 }
