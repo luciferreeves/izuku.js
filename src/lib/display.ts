@@ -1,5 +1,4 @@
 import { Frame } from '../index';
-import { table } from 'table';
 import { Table } from '../helpers/tableBuilder';
 
 /**
@@ -80,7 +79,7 @@ export function show(this: Frame): void {
   } else {
     const numberOfRows = this.rowdata.length;
     if (numberOfRows < 7) {
-      console.log(table(getTable(this.rowdata, this.columns)));
+      displayTable(getTable(this.rowdata, this.columns));
     } else {
       const firstThreeRows = this.rowdata.slice(0, 3);
       const lastThreeRows = this.rowdata.slice(numberOfRows - 3);
@@ -121,7 +120,7 @@ export function head(this: Frame, n = 5): void {
     // Generate the index row
     const indexRow = this.rowdata.map((row, index) => index);
     const data = this.rowdata.slice(0, n);
-    console.log(table(getTable(data, this.columns, indexRow)));
+    displayTable(getTable(data, this.columns, indexRow));
   }
 }
 
@@ -145,6 +144,6 @@ export function tail(this: Frame, n = 5): void {
     const data = this.rowdata.slice(this.rowdata.length - n);
     // Slice the index row to match the data
     const slicedIndexRow = indexRow.slice(indexRow.length - n);
-    console.log(table(getTable(data, this.columns, slicedIndexRow)));
+    displayTable(getTable(data, this.columns, slicedIndexRow));
   }
 }

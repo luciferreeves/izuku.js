@@ -1,7 +1,7 @@
 import { Frame } from '../index';
-import { table } from 'table';
 import { sizeof } from '../helpers/memorySize';
 import { flatten } from './data';
+import { displayTable } from './display';
 /**
  * size returns the total number of elements in the frame
  * @returns the total number of elements in the frame
@@ -74,9 +74,7 @@ export function info(this: Frame): void {
         .split(' x ')[1]
         .trim()} columns`
     );
-    console.log(table(info));
-    // Remove the previous printed newline
-    process.stdout.write('\x1B[1A\x1B[2K');
+    displayTable(info);
     console.log(`Data Types: ${dataTypesString}`);
     console.log(`Memory Usage: ${sizeof(this)} bytes`);
   }

@@ -61,7 +61,6 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
-    "simple-wcswidth": "^1.0.1",
-    "table": "^6.8.0"
+    "simple-wcswidth": "^1.0.1"
   }
 }
