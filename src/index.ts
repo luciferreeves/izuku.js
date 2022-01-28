@@ -9,7 +9,7 @@ import {
 import { show, head, tail } from './lib/display';
 import { getSize, info } from './lib/info';
 import { flatten, fromJSON, fromCSV, searchValue } from './lib/data';
-import { toJSON } from './lib/export';
+import { toJSON, toCSV } from './lib/export';
 import { isArrayOfType, range, flattenJSON } from './helpers/arrayFunctions';
 
 class Izuku {
@@ -83,6 +83,7 @@ class Izuku {
   };
   public title = title;
   public toJSON = toJSON;
+  public toCSV = toCSV;
 }
 
 class Frame extends Izuku {
