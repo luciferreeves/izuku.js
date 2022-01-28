@@ -112,6 +112,20 @@ export function show(this: Frame): void {
 }
 
 /**
+ * showAll prints the frame without truncating
+ * @returns the current frame
+ */
+export function showAll(this: Frame): void {
+  if (this.rowdata.length === 0) {
+    console.log('No data found');
+  } else {
+    displayTable(
+      getTable(this.rowdata, this.columns, undefined, this.tableTitle)
+    );
+  }
+}
+
+/**
  * head prints maximum first n rows of the frame
  * @param n: the number of rows to be returned
  * @returns the first n rows of the frame as array of arrays

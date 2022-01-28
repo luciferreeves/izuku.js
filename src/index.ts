@@ -6,7 +6,7 @@ import {
   getMultipleRowDetails,
   rangeIndex
 } from './lib/locate';
-import { show, head, tail } from './lib/display';
+import { show, head, tail, showAll } from './lib/display';
 import { getSize, info } from './lib/info';
 import { flatten, fromJSON, fromCSV, searchValue, sort } from './lib/data';
 import { toJSON, toCSV } from './lib/export';
@@ -36,6 +36,7 @@ class Izuku {
   public data = data;
   public header = header;
   public show = show;
+  public showAll = showAll;
   public head = head;
   public tail = tail;
   public info = info;

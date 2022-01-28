@@ -213,11 +213,18 @@ export function sort(
   if (columnIndex === -1) {
     throw new Error('Invalid column index');
   }
+  // sort the rowdata based on the column index, if the value is null or undefined, sort it to the end
   const sorted = rowdata.sort((a: any, b: any) => {
-    if (order === 'ascending') {
-      return a[columnIndex] > b[columnIndex] ? 1 : -1;
+    if (a[columnIndex] === null || a[columnIndex] === undefined) {
+      return 1;
+    } else if (b[columnIndex] === null || b[columnIndex] === undefined) {
+      return -1;
     } else {
-      return a[columnIndex] > b[columnIndex] ? -1 : 1;
+      if (order === 'ascending') {
+        return a[columnIndex] > b[columnIndex] ? 1 : -1;
+      } else {
+        return a[columnIndex] < b[columnIndex] ? 1 : -1;
+      }
     }
   });
   this.rowdata = sorted;
