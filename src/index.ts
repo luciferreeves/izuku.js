@@ -8,7 +8,7 @@ import {
 } from './lib/locate';
 import { show, head, tail } from './lib/display';
 import { getSize, info } from './lib/info';
-import { flatten, fromJSON, fromCSV, searchValue } from './lib/data';
+import { flatten, fromJSON, fromCSV, searchValue, sort } from './lib/data';
 import { toJSON, toCSV } from './lib/export';
 import { isArrayOfType, range, flattenJSON } from './helpers/arrayFunctions';
 
@@ -84,6 +84,7 @@ class Izuku {
   public title = title;
   public toJSON = toJSON;
   public toCSV = toCSV;
+  public sort = sort;
 }
 
 class Frame extends Izuku {

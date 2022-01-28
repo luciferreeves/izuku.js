@@ -193,3 +193,33 @@ export function searchValue(
     throw new Error('Invalid options');
   }
 }
+
+/**
+ * sort - sorts the rowdata based on the column index
+ * @param column: the column index or column name to be sorted
+ * @param order: the order of the sort
+ * @returns the sorted rowdata
+ */
+export function sort(
+  this: Frame,
+  column: number | string,
+  ord?: 'accending' | 'descending'
+) {
+  const order = ord ? ord : 'ascending';
+  const colums = this.columns;
+  const rowdata = this.rowdata;
+  const columnIndex =
+    typeof column === 'number' ? column : colums.indexOf(column);
+  if (columnIndex === -1) {
+    throw new Error('Invalid column index');
+  }
+  const sorted = rowdata.sort((a: any, b: any) => {
+    if (order === 'ascending') {
+      return a[columnIndex] > b[columnIndex] ? 1 : -1;
+    } else {
+      return a[columnIndex] > b[columnIndex] ? -1 : 1;
+    }
+  });
+  this.rowdata = sorted;
+  return this;
+}
