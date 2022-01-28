@@ -230,3 +230,29 @@ export function sort(
   this.rowdata = sorted;
   return this;
 }
+
+/**
+ * removeDuplicates - removes the duplicate rows from a column
+ * @param column: the column index or column name
+ * @returns the rowdata without duplicates
+ */
+export function removeDuplicates(this: Frame, column: string | number): Frame {
+  const columnIndex =
+    typeof column === 'number' ? column : this.columns.indexOf(column);
+  if (columnIndex === -1) {
+    throw new Error('Invalid column index');
+  }
+  const rowdata = this.rowdata;
+
+  // remove the duplicates from rowdata based on column index
+  const unique = rowdata.filter((row: any[], index: number) => {
+    for (let i = 0; i < index; i++) {
+      if (row[columnIndex] === rowdata[i][columnIndex]) {
+        return false;
+      }
+    }
+    return true;
+  });
+  this.rowdata = unique;
+  return this;
+}
