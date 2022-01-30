@@ -1,5 +1,5 @@
 import { Frame } from '../index';
-import { Table } from '../helpers/tableBuilder';
+import { Table } from '../helpers/table';
 
 /**
  * getTable returns the data compatible with table.table
