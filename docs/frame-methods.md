@@ -170,6 +170,38 @@ const row = frame.find('John', {column: [0, 1, 2], strict: true});
 const row = frame.find('John', {column: [0, 1, 2], row: [3, 4, 5], strict: false});
 ```
 
+### `sort()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
+
+The `sort()` method is used to sort the rows in the frame. It takes the column name or the index as an argument. It also takes an optional `ascending` or `descending` argument to sort the rows in ascending or descending order. Default is `ascending`.
+
+> **Note**: `sort()` method permanently modifies the frame. You can chain other frame methods on the returned frame.
+
+```js
+// sort the rows in the frame with column 'Name' 
+frame.sort('Name');
+
+// sort the rows in the frame with column 'Name' in descending order
+frame.sort('Name', 'descending');
+
+// sort the rows in the frame with column index 0 in ascending order
+frame.sort(0, 'ascending');
+```
+
+### `removeDuplicates()` ![](https://img.shields.io/badge/chainable-green.svg?style=plastic)
+
+The `removeDuplicates()` method is used to remove duplicate rows from the frame. It takes a `column` argument to remove duplicate rows based on the value in the column.
+
+  - `column`: The column name or index to remove duplicate rows based on the value in the column.
+
+> **Note**: `removeDuplicates()` permanently modifies the frame. You can chain other frame methods on the returned frame.
+
+```js
+// remove duplicate rows based on the value in column 'Name'
+frame.removeDuplicates('Name');
+
+// remove duplicate rows based on the value in column index 0
+frame.removeDuplicates(0);
+```
 
 ### `head()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
 
@@ -208,6 +240,17 @@ The `show()` method is used to print the frame. It takes no argument.
 ```js
 // print the frame
 frame.show();
+```
+
+### `showAll()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
+
+The `showAll()` method is used to print the frame with all the rows. It takes no argument.
+
+`showAll()` is a print method and it does not return a new frame and therefore it is not chainable.
+
+```js
+// print the frame with all the rows
+frame.showAll();
 ```
 
 ### `info()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
@@ -253,3 +296,33 @@ console.log(frame.rangeIndex(2));
 ```
 
 There are some helper methods which will make your workflow easier. Take a look at the [Helper Methods](../helper-methods) section.
+
+### `toJSON()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
+
+The `toJSON()` method is used to convert the frame to a JSON file. It takes an optional path as an argument. If no argument is passed, it will save the JSON file in the current directory. It also takes an optional file name as an argument. If no argument is passed, it will save the JSON file with the name `data.json`.
+
+```js
+// save the frame as a JSON file
+frame.toJSON();
+
+// save the frame as a JSON file with the name 'frame.json' in the current directory
+frame.toJSON(undefined, 'frame.json');
+
+// save the frame as a JSON file with the name 'data.json' in the directory './data'
+frame.toJSON('./data', 'data.json');
+```
+
+### `toCSV()` ![](https://img.shields.io/badge/not%20chainable-red.svg?style=plastic)
+
+The `toCSV()` method is used to convert the frame to a CSV file. It takes an optional path as an argument. If no argument is passed, it will save the CSV file in the current directory. It also takes an optional file name as an argument. If no argument is passed, it will save the CSV file with the name `data.csv`.
+
+```js
+// save the frame as a CSV file
+frame.toCSV();
+
+// save the frame as a CSV file with the name 'frame.csv' in the current directory
+frame.toCSV(undefined, 'frame.csv');
+
+// save the frame as a CSV file with the name 'data.csv' in the directory './data'
+frame.toCSV('./data', 'data.csv');
+```
