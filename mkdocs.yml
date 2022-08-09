@@ -11,7 +11,7 @@ theme:
 copyright: Copyright &copy; 2022 Izuku. Licensed under the MIT License.
 repo_url: https://github.com/luciferreeves/izuku.js
 repo_name: luciferreeves/izuku.js
-edit_uri: edit/master/docs/
+edit_uri: edit/main/docs/
 plugins:
   - search
 extra:
